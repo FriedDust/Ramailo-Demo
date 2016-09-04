@@ -28,6 +28,14 @@
 			<version>0.9.10</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>com.ramailo</groupId>
 			<artifactId>ramailo</artifactId>
