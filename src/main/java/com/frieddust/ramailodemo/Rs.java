@@ -5,6 +5,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+/**
+ * 
+ * @author Kailash Bijayananda <fried.dust@gmail.com>
+ *
+ */
 @Path("/test/")
 public class Rs {
 
