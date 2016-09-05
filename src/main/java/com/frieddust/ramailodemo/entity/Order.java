@@ -19,6 +19,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ramailo.RamailoResource;
 
 /**
@@ -44,6 +45,7 @@ public class Order implements Serializable {
 
 	@OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@Fetch(FetchMode.SELECT)
+	@JsonManagedReference
 	private List<OrderItem> orderItems = new ArrayList<>();
 
 	public Integer getId() {

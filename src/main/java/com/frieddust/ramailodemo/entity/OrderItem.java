@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 /**
  * 
  * @author Kailash Bijayananda <fried.dust@gmail.com>
@@ -31,6 +33,7 @@ public class OrderItem implements Serializable {
 	@ManyToOne
 	@NotNull
 	@JoinColumn(name = "order_id", referencedColumnName = "id")
+	@JsonBackReference
 	private Order order;
 
 	@ManyToOne
