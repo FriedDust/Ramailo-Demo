@@ -17,7 +17,7 @@ import com.ramailo.RamailoResource;
  * @author Kailash Bijayananda <fried.dust@gmail.com>
  *
  */
-@RamailoResource("items")
+@RamailoResource(value = "items", stringify = "name")
 @Entity
 @Table(name = "items")
 public class Item implements Serializable {

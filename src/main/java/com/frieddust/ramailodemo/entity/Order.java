@@ -35,7 +35,7 @@ import com.ramailo.jpautil.LocalDateSerializer;
  * @author Kailash Bijayananda <fried.dust@gmail.com>
  *
  */
-@RamailoResource("orders")
+@RamailoResource(value = "orders", stringify = "name")
 @Entity
 @Table(name = "orders")
 public class Order implements Serializable {
