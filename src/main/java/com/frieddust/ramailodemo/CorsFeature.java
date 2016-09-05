@@ -6,6 +6,11 @@ import javax.ws.rs.ext.Provider;
 
 import org.jboss.resteasy.plugins.interceptors.CorsFilter;
 
+/**
+ * 
+ * @author Kailash Bijayananda <fried.dust@gmail.com>
+ *
+ */
 @Provider
 public class CorsFeature implements Feature {
 	
