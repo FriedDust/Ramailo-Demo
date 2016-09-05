@@ -1,10 +1,13 @@
 package com.frieddust.ramailodemo.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,7 +23,12 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.ramailo.RamailoResource;
+import com.ramailo.jpautil.LocalDateAttributeConverter;
+import com.ramailo.jpautil.LocalDateDeserializer;
+import com.ramailo.jpautil.LocalDateSerializer;
 
 /**
  * 
@@ -38,6 +46,12 @@ public class Order implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@Column(name = "order_date")
+	@Convert(converter = LocalDateAttributeConverter.class)
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
+	private LocalDate orderDate;
+
 	@ManyToOne
 	@NotNull
 	@JoinColumn(name = "customer_id", referencedColumnName = "id")
@@ -54,6 +68,14 @@ public class Order implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public LocalDate getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(LocalDate orderDate) {
+		this.orderDate = orderDate;
 	}
 
 	public Customer getCustomer() {
