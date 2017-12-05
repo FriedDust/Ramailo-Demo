@@ -8,3 +8,4 @@ swarm:
         connection-url: jdbc:postgresql://localhost:5432/ramailo
         user-name: frieddust
         password:
+        jta: true
