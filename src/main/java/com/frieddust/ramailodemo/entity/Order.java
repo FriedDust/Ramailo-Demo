@@ -25,7 +25,9 @@ import org.hibernate.annotations.FetchMode;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.ramailo.RamailoResource;
+import com.ramailo.annotation.RamailoField;
+import com.ramailo.annotation.RamailoList;
+import com.ramailo.annotation.RamailoResource;
 import com.ramailo.jpautil.LocalDateAttributeConverter;
 import com.ramailo.jpautil.LocalDateDeserializer;
 import com.ramailo.jpautil.LocalDateSerializer;
@@ -42,21 +44,25 @@ public class Order implements Serializable {
 
 	private static final long serialVersionUID = -258440034790261589L;
 
+	@RamailoField(label = "ID")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@RamailoField
 	@Column(name = "order_date")
 	@Convert(converter = LocalDateAttributeConverter.class)
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	@JsonSerialize(using = LocalDateSerializer.class)
 	private LocalDate orderDate;
 
+	@RamailoField
 	@ManyToOne
 	@NotNull
 	@JoinColumn(name = "customer_id", referencedColumnName = "id")
 	private Customer customer;
 
+	@RamailoList(label = "Line items", childrenType = OrderItem.class)
 	@OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@Fetch(FetchMode.SELECT)
 	@JsonManagedReference

@@ -10,7 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.ramailo.RamailoResource;
+import com.ramailo.annotation.RamailoField;
+import com.ramailo.annotation.RamailoResource;
 
 /**
  * 
@@ -24,13 +25,16 @@ public class Item implements Serializable {
 
 	private static final long serialVersionUID = -574715585363480539L;
 
+	@RamailoField(label = "ID")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@RamailoField
 	@Column
 	private String name;
-	
+
+	@RamailoField
 	@Column
 	private BigDecimal rate;
 
@@ -41,11 +45,11 @@ public class Item implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	public BigDecimal getRate() {
 		return rate;
 	}
-	
+
 	public void setRate(BigDecimal rate) {
 		this.rate = rate;
 	}

@@ -14,39 +14,47 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.ramailo.annotation.RamailoField;
 
 /**
  * 
  * @author Kailash Bijayananda <fried.dust@gmail.com>
  *
  */
+
 @Entity
 @Table(name = "order_items")
 public class OrderItem implements Serializable {
 
 	private static final long serialVersionUID = -5660400964053073911L;
 
+	@RamailoField(label = "ID")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@RamailoField
 	@ManyToOne
 	@NotNull
 	@JoinColumn(name = "order_id", referencedColumnName = "id")
 	@JsonBackReference
 	private Order order;
 
+	@RamailoField
 	@ManyToOne
 	@NotNull
 	@JoinColumn(name = "item_id", referencedColumnName = "id")
 	private Item item;
 
+	@RamailoField
 	@Column
 	private BigDecimal qty;
 
+	@RamailoField
 	@Column
 	private BigDecimal rate;
 
+	@RamailoField
 	@Column
 	private BigDecimal total;
 

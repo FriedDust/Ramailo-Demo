@@ -9,7 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.ramailo.RamailoResource;
+import com.ramailo.annotation.RamailoField;
+import com.ramailo.annotation.RamailoResource;
 
 /**
  * 
@@ -23,10 +24,12 @@ public class Customer implements Serializable {
 
 	private static final long serialVersionUID = -3957833521642758148L;
 
+	@RamailoField(label = "ID")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@RamailoField
 	@Column
 	private String name;
 
