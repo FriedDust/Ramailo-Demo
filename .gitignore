@@ -10,6 +10,7 @@ target
 .Trashes
 .idea
 .nbproject
+.vscode
 *.iml
 
 frontend/
@@ -25,3 +26,4 @@ frontend/coverage
 
 src/main/resources/META-INF/persistence.xml
 src/main/resources/config.properties
+src/main/resources/project-defaults.yml
