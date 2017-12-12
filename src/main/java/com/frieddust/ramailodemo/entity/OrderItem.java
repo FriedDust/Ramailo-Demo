@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.ramailo.annotation.RamailoField;
+import com.ramailo.annotation.RamailoResource;
 
 /**
  * 
@@ -22,6 +23,7 @@ import com.ramailo.annotation.RamailoField;
  *
  */
 
+@RamailoResource(value = "orderitems", stringify = "order")
 @Entity
 @Table(name = "order_items")
 public class OrderItem implements Serializable {
