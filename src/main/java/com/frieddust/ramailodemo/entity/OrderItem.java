@@ -107,4 +107,19 @@ public class OrderItem implements Serializable {
 	public void setTotal(BigDecimal total) {
 		this.total = total;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		OrderItem oi = (OrderItem) o;
+		if (oi == this) {
+			return true;
+		}
+		if (oi == null) {
+			return false;
+		}
+		if (this.id.equals(oi.getId())) {
+			return true;
+		}
+		return false;
+	}
 }
