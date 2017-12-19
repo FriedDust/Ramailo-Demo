@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.ramailo.annotation.RamailoField;
@@ -19,12 +17,12 @@ import com.ramailo.annotation.RamailoResource;
  * @author Kailash Bijayananda <fried.dust@gmail.com>
  *
  */
-@RamailoResource(value = "customers", stringify = "name")
+@RamailoResource(value = "categories", stringify = "name")
 @Entity
-@Table(name = "customers")
-public class Customer implements Serializable {
+@Table(name = "categories")
+public class Category implements Serializable {
 
-	private static final long serialVersionUID = -3957833521642758148L;
+	private static final long serialVersionUID = -7796346025912595357L;
 
 	@RamailoField(label = "ID")
 	@Id
@@ -34,32 +32,6 @@ public class Customer implements Serializable {
 	@RamailoField
 	@Column
 	private String name;
-
-	@RamailoField
-	@ManyToOne
-	@JoinColumn(name = "category_id", referencedColumnName = "id")
-	private Category category;
-
-	@RamailoField
-	@ManyToOne
-	@JoinColumn(name = "country_id", referencedColumnName = "id")
-	private Country country;
-
-	public Country getCountry() {
-		return country;
-	}
-
-	public void setCountry(Country country) {
-		this.country = country;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
 
 	public Integer getId() {
 		return id;
