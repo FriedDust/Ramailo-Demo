@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.frieddust.ramailodemo.entity.action.CustomerActions;
 import com.ramailo.annotation.RamailoField;
 import com.ramailo.annotation.RamailoResource;
 
@@ -19,7 +20,8 @@ import com.ramailo.annotation.RamailoResource;
  * @author Kailash Bijayananda <fried.dust@gmail.com>
  *
  */
-@RamailoResource(value = "customers", stringify = "name", gridHeaders = { "name", "category", "country" })
+@RamailoResource(value = "customers", stringify = "name", gridHeaders = { "name", "category", "country" }, actions = {
+		CustomerActions.class })
 @Entity
 @Table(name = "customers")
 public class Customer implements Serializable {
