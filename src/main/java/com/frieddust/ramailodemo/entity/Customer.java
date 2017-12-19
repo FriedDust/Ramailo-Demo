@@ -19,7 +19,7 @@ import com.ramailo.annotation.RamailoResource;
  * @author Kailash Bijayananda <fried.dust@gmail.com>
  *
  */
-@RamailoResource(value = "customers", stringify = "name")
+@RamailoResource(value = "customers", stringify = "name", gridHeaders = { "name", "category", "country" })
 @Entity
 @Table(name = "customers")
 public class Customer implements Serializable {
