@@ -1,6 +1,7 @@
 package com.frieddust.ramailodemo.entity.action;
 
 import com.frieddust.ramailodemo.entity.Customer;
+import com.frieddust.ramailodemo.entity.Item;
 import com.ramailo.annotation.RamailoAction;
 import com.ramailo.annotation.RamailoArg;
 import com.ramailo.service.BaseActions;
@@ -45,9 +46,26 @@ public class CustomerActions extends BaseActions<Customer> {
 	}
 
 	@RamailoAction
-	public Object sing(@RamailoArg String song) {
+	public Object sing(@RamailoArg(name = "song") String song) {
 		Customer customer = this.getEntity();
 		return "Hi, I'm " + customer.getName() + " and I want to sing " + song;
+	}
+
+	@RamailoAction
+	public Object buy(@RamailoArg(name = "item") Item item, @RamailoArg(name = "qty", label = "Quantity") Integer qty) {
+		Customer customer = this.getEntity();
+		Item i = getEm().find(Item.class, item.getId());
+
+		return customer.getName() + " wants to buy " + qty + " " + i.getName();
+	}
+
+	@RamailoAction(methodType = "POST")
+	public Object sell(@RamailoArg(name = "item") Item item,
+			@RamailoArg(name = "qty", label = "Quantity") Integer qty) {
+		Customer customer = this.getEntity();
+		Item i = getEm().find(Item.class, item.getId());
+
+		return customer.getName() + " wants to sell " + qty + " " + i.getName();
 	}
 
 	@RamailoAction()
