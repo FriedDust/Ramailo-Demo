@@ -2,6 +2,7 @@ package com.frieddust.ramailodemo.entity.action;
 
 import com.frieddust.ramailodemo.entity.Customer;
 import com.ramailo.annotation.RamailoAction;
+import com.ramailo.annotation.RamailoArg;
 import com.ramailo.service.BaseActions;
 
 public class CustomerActions extends BaseActions<Customer> {
@@ -41,6 +42,12 @@ public class CustomerActions extends BaseActions<Customer> {
 	public Object greet() {
 		Customer customer = this.getEntity();
 		return "Hi, " + customer.getName();
+	}
+
+	@RamailoAction
+	public Object sing(@RamailoArg String song) {
+		Customer customer = this.getEntity();
+		return "Hi, I'm " + customer.getName() + " and I want to sing " + song;
 	}
 
 	@RamailoAction()
