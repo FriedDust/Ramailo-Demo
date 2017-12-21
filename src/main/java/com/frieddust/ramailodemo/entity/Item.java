@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import com.ramailo.annotation.RamailoField;
@@ -60,5 +61,10 @@ public class Item implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	@PrePersist
+	public void testPrePersist() {
+		System.out.println("ON PRE PERSIST");
 	}
 }
