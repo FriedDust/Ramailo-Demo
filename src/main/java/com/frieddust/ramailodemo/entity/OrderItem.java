@@ -36,28 +36,31 @@ public class OrderItem implements Serializable {
 	private Integer id;
 
 	@RamailoField
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@NotNull
 	@JoinColumn(name = "order_id", referencedColumnName = "id")
 	@JsonBackReference
 	private Order order;
 
 	@RamailoField
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@NotNull
 	@JoinColumn(name = "item_id", referencedColumnName = "id")
 	private Item item;
 
 	@RamailoField
 	@Column
+	@NotNull
 	private BigDecimal qty;
 
 	@RamailoField
 	@Column
+	@NotNull
 	private BigDecimal rate;
 
 	@RamailoField
 	@Column
+	@NotNull
 	private BigDecimal total;
 
 	public Integer getId() {

@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -54,12 +55,13 @@ public class Order implements Serializable {
 	@Convert(converter = LocalDateAttributeConverter.class)
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	@JsonSerialize(using = LocalDateSerializer.class)
+	@NotNull
 	private LocalDate orderDate;
 
 	@RamailoField
-	@ManyToOne
-	@NotNull
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "customer_id", referencedColumnName = "id")
+	@NotNull
 	private Customer customer;
 
 	@RamailoList(label = "Line items", childrenType = OrderItem.class)

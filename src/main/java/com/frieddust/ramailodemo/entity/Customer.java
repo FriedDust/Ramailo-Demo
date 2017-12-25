@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.frieddust.ramailodemo.entity.action.CustomerActions;
 import com.ramailo.annotation.RamailoField;
@@ -35,15 +37,18 @@ public class Customer implements Serializable {
 
 	@RamailoField
 	@Column
+	@NotNull
+	@Size(min = 2, max = 50)
 	private String name;
 
 	@RamailoField
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "category_id", referencedColumnName = "id")
+	@NotNull
 	private Category category;
 
 	@RamailoField
-	@ManyToOne
+	@ManyToOne(optional = true)
 	@JoinColumn(name = "country_id", referencedColumnName = "id")
 	private Country country;
 

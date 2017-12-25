@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.ramailo.annotation.RamailoField;
 import com.ramailo.annotation.RamailoResource;
@@ -33,15 +35,20 @@ public class User implements Serializable {
 
 	@RamailoField
 	@Column
+	@NotNull
+	@Size(min = 2, max = 50)
 	private String email;
 
 	@RamailoField
 	@Column
+	@NotNull
+	@Size(min = 2, max = 100)
 	private String password;
 
 	@RamailoField
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "role_id", nullable = false, referencedColumnName = "id")
+	@NotNull
 	private Role role;
 
 	public Integer getId() {

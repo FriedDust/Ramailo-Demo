@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.ramailo.annotation.RamailoField;
 import com.ramailo.annotation.RamailoResource;
@@ -33,10 +35,13 @@ public class Item implements Serializable {
 
 	@RamailoField
 	@Column
+	@NotNull
+	@Size(min = 2, max = 50)
 	private String name;
 
 	@RamailoField
 	@Column
+	@NotNull
 	private BigDecimal rate;
 
 	public Integer getId() {
@@ -62,7 +67,7 @@ public class Item implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	@PrePersist
 	public void testPrePersist() {
 		System.out.println("ON PRE PERSIST");

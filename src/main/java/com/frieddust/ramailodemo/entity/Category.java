@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.ramailo.annotation.RamailoField;
 import com.ramailo.annotation.RamailoResource;
@@ -31,6 +33,8 @@ public class Category implements Serializable {
 
 	@RamailoField
 	@Column
+	@NotNull
+	@Size(min = 2, max = 50)
 	private String name;
 
 	public Integer getId() {
