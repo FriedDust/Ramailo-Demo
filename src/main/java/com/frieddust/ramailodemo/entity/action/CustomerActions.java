@@ -4,9 +4,9 @@ import com.frieddust.ramailodemo.entity.Customer;
 import com.frieddust.ramailodemo.entity.Item;
 import com.ramailo.annotation.RamailoAction;
 import com.ramailo.annotation.RamailoArg;
-import com.ramailo.service.BaseActions;
+import com.ramailo.service.BaseAction;
 
-public class CustomerActions extends BaseActions<Customer> {
+public class CustomerActions extends BaseAction<Customer> {
 
 	public CustomerActions(Customer customer) {
 		super(customer);
