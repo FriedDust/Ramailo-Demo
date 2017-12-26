@@ -14,8 +14,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.frieddust.ramailodemo.entity.action.CustomerActions;
-import com.ramailo.annotation.RamailoField;
-import com.ramailo.annotation.RamailoResource;
+import com.ramailo.meta.annotation.RamailoField;
+import com.ramailo.meta.annotation.RamailoResource;
 
 /**
  * 

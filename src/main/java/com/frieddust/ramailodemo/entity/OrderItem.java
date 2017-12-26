@@ -14,8 +14,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.ramailo.annotation.RamailoField;
-import com.ramailo.annotation.RamailoResource;
+import com.ramailo.meta.annotation.RamailoField;
+import com.ramailo.meta.annotation.RamailoResource;
 
 /**
  * 
