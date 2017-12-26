@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ramailo.auth.Identity;
 import com.ramailo.meta.annotation.RamailoField;
 import com.ramailo.meta.annotation.RamailoResource;
 
@@ -24,7 +26,7 @@ import com.ramailo.meta.annotation.RamailoResource;
 @RamailoResource(value = "users", stringify = "email")
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
+public class User implements Identity, Serializable {
 
 	private static final long serialVersionUID = 3804457357710412333L;
 
@@ -39,6 +41,7 @@ public class User implements Serializable {
 	@Size(min = 2, max = 50)
 	private String email;
 
+	@JsonIgnore
 	@RamailoField
 	@Column
 	@NotNull
