@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.frieddust.ramailodemo.entity.RefreshToken;
 import com.frieddust.ramailodemo.entity.User;
 import com.ramailo.annotation.Logged;
 import com.ramailo.auth.Identity;
@@ -52,7 +53,11 @@ public class IdentityServiceImpl implements IdentityService {
 
 	@Override
 	public void saveRefreshToken(Identity user, TokenDTO tokenDTO) {
-
+		RefreshToken rtoken = new RefreshToken();
+		rtoken.setUser((User) user);
+		rtoken.setToken(tokenDTO.getRefreshToken());
+		
+		em.persist(rtoken);
 	}
 
 	@Override
